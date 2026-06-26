@@ -1,0 +1,366 @@
+name: STRIDE Release Integrity
+
+on:
+push:
+branches:
+- main
+pull_request:
+workflow_dispatch:
+
+permissions:
+contents: read
+
+jobs:
+verify:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v5
+
+  - name: Setup Python
+    uses: actions/setup-python@v6
+    with:
+      python-version: "3.12"
+
+  - name: Verify repository structure
+    shell: bash
+    run: |
+      python - <<'PY'
+      from pathlib import Path
+      import sys
+
+      required = [
+          "README.md",
+          "LICENSE",
+          "demo/STRIDE_v1_1_3.html",
+          "docs/FAQ.md",
+          "docs/Quickstart.md",
+          "docs/Shunyaya-Structural-Stack.png",
+          "docs/STRIDE-Architecture-Notes.md",
+          "docs/STRIDE-Challenge.md",
+          "docs/STRIDE-Claim-Boundary.md",
+          "docs/STRIDE-Diagram.png",
+          "docs/STRIDE-Known-Limitations.md",
+          "docs/STRIDE-Motion-Contract.md",
+          "docs/STRIDE-Reproduction-Protocol.md",
+          "docs/STRIDE-Resolution-Guarantees.md",
+          "docs/STRIDE-Runtime-State-Model.md",
+          "evidence/EXPECTED_RESULTS.json",
+          "evidence/QUALIFICATION_SUMMARY.md",
+          "evidence/STRIDE_v1_1_3_346_Case_Qualification_Report.json",
+          "evidence/STRIDE_v1_1_3_RELEASE_MANIFEST.json",
+          "VERIFY/FREEZE_DEMO_SHA256.txt",
+          "VERIFY/RELEASE_CHECKLIST.md",
+          "VERIFY/VERIFY.txt",
+      ]
+
+      missing = [path for path in required if not Path(path).is_file()]
+
+      if missing:
+          print("Missing required files:")
+          for path in missing:
+              print("-", path)
+          sys.exit(1)
+
+      print("Repository structure verified.")
+      PY
+
+  - name: Verify frozen HTML hash
+    shell: bash
+    run: |
+      python - <<'PY'
+      from pathlib import Path
+      import hashlib
+      import json
+      import re
+      import sys
+
+      artifact = Path("demo/STRIDE_v1_1_3.html")
+      freeze_file = Path("VERIFY/FREEZE_DEMO_SHA256.txt")
+      expected_file = Path("evidence/EXPECTED_RESULTS.json")
+
+      actual = hashlib.sha256(artifact.read_bytes()).hexdigest().lower()
+
+      freeze_text = freeze_file.read_text(
+          encoding="utf-8",
+          errors="replace",
+      )
+
+      recorded_hashes = {
+          value.lower()
+          for value in re.findall(r"\b[0-9a-fA-F]{64}\b", freeze_text)
+      }
+
+      if actual not in recorded_hashes:
+          print("Frozen HTML hash mismatch.")
+          print("Actual:", actual)
+          print("Recorded:", sorted(recorded_hashes))
+          sys.exit(1)
+
+      expected = json.loads(expected_file.read_text(encoding="utf-8"))
+
+      if expected.get("artifact_sha256", "").lower() != actual:
+          print("EXPECTED_RESULTS.json artifact hash mismatch.")
+          print("Actual:", actual)
+          print("Expected:", expected.get("artifact_sha256"))
+          sys.exit(1)
+
+      print("Frozen HTML hash verified:", actual)
+      PY
+
+  - name: Verify evidence consistency
+    shell: bash
+    run: |
+      python - <<'PY'
+      from pathlib import Path
+      import json
+      import sys
+
+      expected = json.loads(
+          Path("evidence/EXPECTED_RESULTS.json").read_text(encoding="utf-8")
+      )
+
+      report = json.loads(
+          Path(
+              "evidence/STRIDE_v1_1_3_346_Case_Qualification_Report.json"
+          ).read_text(encoding="utf-8")
+      )
+
+      manifest = json.loads(
+          Path(
+              "evidence/STRIDE_v1_1_3_RELEASE_MANIFEST.json"
+          ).read_text(encoding="utf-8")
+      )
+
+      failures = []
+
+      def require(condition, message):
+          if not condition:
+              failures.append(message)
+
+      require(expected.get("schema") == "stride.expected_results/1.0",
+              "Unexpected expected-results schema.")
+
+      require(expected.get("project") == "STRIDE",
+              "Unexpected project identity.")
+
+      require(expected.get("version") == "1.1.3",
+              "Expected-results version mismatch.")
+
+      require(expected.get("artifact") == "demo/STRIDE_v1_1_3.html",
+              "Artifact path mismatch.")
+
+      require(
+          expected.get("expected_status")
+          == "REFERENCE_ARCHITECTURE_VALIDATED",
+          "Expected release status mismatch.",
+      )
+
+      qualification = expected.get("qualification", {})
+      family_counts = qualification.get("family_case_counts", {})
+
+      require(
+          qualification.get("suite_id") == "stride.qualification/346",
+          "Qualification suite mismatch.",
+      )
+
+      require(
+          qualification.get("runtime_release_version") == "1.1.3",
+          "Runtime release version mismatch.",
+      )
+
+      require(
+          qualification.get("inherited_kernel_version") == "1.0.1",
+          "Inherited kernel version mismatch.",
+      )
+
+      require(
+          qualification.get("total_case_count") == 346,
+          "Expected total case count mismatch.",
+      )
+
+      require(
+          qualification.get("allPass") is True,
+          "Expected qualification pass state is not true.",
+      )
+
+      require(
+          qualification.get("unsafe_admissions") == 0,
+          "Expected unsafe-admission count is not zero.",
+      )
+
+      require(
+          sum(family_counts.values()) == 346,
+          "Expected family counts do not total 346.",
+      )
+
+      require(report.get("version") == "1.1.3",
+              "Frozen report version mismatch.")
+
+      require(
+          report.get("inherited_kernel_version") == "1.0.1",
+          "Frozen report inherited kernel mismatch.",
+      )
+
+      require(
+          report.get("total_case_count") == 346,
+          "Frozen report total case count mismatch.",
+      )
+
+      require(
+          report.get("allPass") is True,
+          "Frozen report allPass is not true.",
+      )
+
+      require(
+          report.get("unsafe_admissions") == 0,
+          "Frozen report unsafe admissions are not zero.",
+      )
+
+      report_family_counts = {
+          "runtime_scenarios": report.get("case_count"),
+          "core_conformance": report.get("core_case_count"),
+          "falsification": report.get("falsification_case_count"),
+          "digital_twin": report.get("twin_case_count"),
+          "middleware_adapter": report.get("adapter_case_count"),
+          "hil_boundary": report.get("hil_case_count"),
+          "physical_pilot": report.get("pilot_case_count"),
+          "production_candidate": report.get("production_case_count"),
+          "limited_deployment": report.get("deployment_case_count"),
+      }
+
+      require(
+          report_family_counts == family_counts,
+          "Frozen report family counts differ from expected results.",
+      )
+
+      required_scenarios = {
+          "ambiguous": "INCOMPLETE",
+          "conflict": "CONFLICT",
+          "human": "FORBIDDEN",
+          "forbidden": "FORBIDDEN",
+          "force": "FORBIDDEN",
+          "resolved": "RESOLVED",
+      }
+
+      observed_scenarios = {
+          row.get("scenario"): row.get("actual")
+          for row in report.get("cases", [])
+      }
+
+      require(
+          observed_scenarios == required_scenarios,
+          "Frozen runtime scenarios differ from expected outcomes.",
+      )
+
+      require(
+          all(row.get("pass") is True for row in report.get("cases", [])),
+          "One or more frozen runtime scenarios did not pass.",
+      )
+
+      release = manifest.get("release", {})
+      manifest_qualification = release.get("qualification", {})
+      runtime = manifest.get("runtime", {})
+
+      require(release.get("name") == "STRIDE",
+              "Manifest project name mismatch.")
+
+      require(release.get("version") == "1.1.3",
+              "Manifest release version mismatch.")
+
+      require(
+          release.get("status") == "REFERENCE_ARCHITECTURE_VALIDATED",
+          "Manifest release status mismatch.",
+      )
+
+      require(
+          release.get("artifact_filename") == "STRIDE_v1_1_3.html",
+          "Manifest artifact filename mismatch.",
+      )
+
+      require(
+          manifest_qualification.get("suite_id")
+          == "stride.qualification/346",
+          "Manifest qualification suite mismatch.",
+      )
+
+      require(
+          manifest_qualification.get("total_cases") == 346,
+          "Manifest total case count mismatch.",
+      )
+
+      require(
+          manifest_qualification.get("expected_unsafe_admissions") == 0,
+          "Manifest unsafe-admission expectation mismatch.",
+      )
+
+      require(
+          manifest_qualification.get("inherited_kernel_version") == "1.0.1",
+          "Manifest inherited kernel mismatch.",
+      )
+
+      require(runtime.get("version") == "1.1.3",
+              "Manifest runtime version mismatch.")
+
+      require(
+          runtime.get("verification_loaded") is False,
+          "Manifest must declare verification unloaded at startup.",
+      )
+
+      if failures:
+          print("Evidence verification failed:")
+          for failure in failures:
+              print("-", failure)
+          sys.exit(1)
+
+      print("Evidence consistency verified.")
+      print("Qualification: 346 / 346")
+      print("Unsafe admissions: 0")
+      PY
+
+  - name: Verify README release references
+    shell: bash
+    run: |
+      python - <<'PY'
+      from pathlib import Path
+      import sys
+
+      text = Path("README.md").read_text(encoding="utf-8")
+
+      required = [
+          "Structural Robotic Intention and Deterministic Execution",
+          "motion_allowed iff valid_motion_contract_exists",
+          "intelligence_proposes; structure_permits",
+          "demo/STRIDE_v1_1_3.html",
+          "stride.qualification/346",
+          "346 / 346",
+          "unsafe_admissions = 0",
+          "VERIFY/FREEZE_DEMO_SHA256.txt",
+          "reference_architecture_validated",
+          "production_safety_certified",
+      ]
+
+      missing = [item for item in required if item not in text]
+
+      if missing:
+          print("README is missing required release references:")
+          for item in missing:
+              print("-", item)
+          sys.exit(1)
+
+      forbidden = [
+          "docs/STRIDE-Structural-Admission.md",
+      ]
+
+      present_forbidden = [item for item in forbidden if item in text]
+
+      if present_forbidden:
+          print("README contains intentionally omitted references:")
+          for item in present_forbidden:
+              print("-", item)
+          sys.exit(1)
+
+      print("README release references verified.")
+      PY
