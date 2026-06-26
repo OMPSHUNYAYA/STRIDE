@@ -440,9 +440,13 @@ python -m http.server 8000
 python3 -m http.server 8000
 ```
 
-Then use the local observatory link:
+Launch STRIDE through the local server.
 
-[Launch STRIDE through the local server](http://localhost:8000/demo/STRIDE_v1_1_3.html)
+After starting the server, copy or enter this address in your browser:
+
+`http://localhost:8000/demo/STRIDE_v1_1_3.html`
+
+This address works only while the local server is running.
 
 Inside the observatory:
 
