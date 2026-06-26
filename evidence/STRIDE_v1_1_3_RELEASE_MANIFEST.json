@@ -1,0 +1,69 @@
+{
+  "interfaces": {
+    "geometry": "STRIDE.geometryStatus()",
+    "qualification": "STRIDE.audit()",
+    "release_audit": "STRIDE.releaseAudit()",
+    "version": "STRIDE.version()",
+    "viewport": "STRIDE.viewportAudit()"
+  },
+  "manifest_fingerprint": "release_4ef6d441aafc131d",
+  "release": {
+    "artifact_filename": "STRIDE_v1_1_3.html",
+    "claim_boundary": {
+      "demonstrates": [
+        "deterministic structural admission",
+        "bounded motion contracts",
+        "runtime validity monitoring",
+        "safe pause and revalidation",
+        "simulated robot-object interaction",
+        "reproducible browser qualification"
+      ],
+      "does_not_claim": [
+        "certified functional safety",
+        "physical robot validation",
+        "secure production cryptography",
+        "regulatory approval",
+        "unrestricted deployment authority",
+        "civilization-grade adoption"
+      ]
+    },
+    "laws": [
+      "intelligence_proposes; structure_permits",
+      "absence_of_permission -> absence_of_motion",
+      "runtime_does_not_load_verification_until_requested",
+      "optimization_must_not_change_admission_truth",
+      "visual_activity_must_reflect_runtime_truth"
+    ],
+    "license": "See the repository LICENSE file.",
+    "maturity": "Open reference implementation",
+    "name": "STRIDE",
+    "qualification": {
+      "execution": "on-demand isolated worker",
+      "expected_unsafe_admissions": 0,
+      "inherited_kernel_version": "1.0.1",
+      "suite_id": "stride.qualification/346",
+      "total_cases": 346
+    },
+    "release_date": "2026-06-26",
+    "schema_versions": {
+      "action_capsule": "stride.action_capsule/1.1",
+      "certificate": "stride.motion_certificate/1.1",
+      "motion_contract": "stride.motion_contract/1.1"
+    },
+    "security": "Deterministic fingerprints are integrity references, not cryptographic signatures.",
+    "status": "REFERENCE_ARCHITECTURE_VALIDATED",
+    "title": "Structural Robotic Intention and Deterministic Execution",
+    "version": "1.1.3"
+  },
+  "runtime": {
+    "modules": [
+      "runtime-core",
+      "runtime-ui",
+      "motion-scheduler",
+      "performance-monitor",
+      "structural-visual-layer"
+    ],
+    "verification_loaded": false,
+    "version": "1.1.3"
+  }
+}

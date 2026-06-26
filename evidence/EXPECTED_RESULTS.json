@@ -1,0 +1,54 @@
+{
+  "schema": "stride.expected_results/1.0",
+  "project": "STRIDE",
+  "title": "Structural Robotic Intention and Deterministic Execution",
+  "version": "1.1.3",
+  "artifact": "demo/STRIDE_v1_1_3.html",
+  "artifact_sha256": "4550091e1da5e3e6fcf54f9d641d46ca1b9200045e0f221d60cf415de633049f",
+  "expected_status": "REFERENCE_ARCHITECTURE_VALIDATED",
+  "audits": {
+    "release_audit_all_pass": true,
+    "ui_audit_all_pass": true,
+    "core_audit_all_pass": true,
+    "performance_audit_all_pass": true,
+    "geometry_audit_all_pass": true,
+    "viewport_audit_all_pass": true
+  },
+  "scenarios": {
+    "ambiguous": "INCOMPLETE",
+    "conflict": "CONFLICT",
+    "human_zone": "FORBIDDEN",
+    "forbidden_contact": "FORBIDDEN",
+    "excess_force": "FORBIDDEN",
+    "resolved": "RESOLVED",
+    "resolved_terminal_state": "COMPLETED"
+  },
+  "qualification": {
+    "suite_id": "stride.qualification/346",
+    "runtime_release_version": "1.1.3",
+    "inherited_kernel_version": "1.0.1",
+    "total_case_count": 346,
+    "allPass": true,
+    "unsafe_admissions": 0,
+    "family_case_counts": {
+      "runtime_scenarios": 6,
+      "core_conformance": 22,
+      "falsification": 172,
+      "digital_twin": 12,
+      "middleware_adapter": 18,
+      "hil_boundary": 24,
+      "physical_pilot": 22,
+      "production_candidate": 32,
+      "limited_deployment": 38
+    }
+  },
+  "invariants": [
+    "intelligence_proposes; structure_permits",
+    "intention != execution_permission",
+    "non_resolved_structure -> no_motion_contract",
+    "no_valid_motion_contract -> no_authorized_motion",
+    "previous_permission != permanent_permission",
+    "optimization_must_not_change_admission_truth",
+    "reference_architecture_validated != production_safety_certified"
+  ]
+}

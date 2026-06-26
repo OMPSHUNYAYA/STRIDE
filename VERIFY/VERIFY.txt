@@ -1,0 +1,573 @@
+STRIDE VERIFICATION
+
+Structural Robotic Intention and Deterministic Execution
+
+Version: 1.1.3
+Reference Status: REFERENCE_ARCHITECTURE_VALIDATED
+
+Governing Boundary
+
+reference_architecture_validated != production_safety_certified
+
+
+1. VERIFY THE FROZEN HTML
+
+Expected file:
+
+demo/STRIDE_v1_1_3.html
+
+Windows:
+
+certutil -hashfile demo\STRIDE_v1_1_3.html SHA256
+
+macOS / Linux:
+
+sha256sum demo/STRIDE_v1_1_3.html
+
+Compare the calculated SHA-256 value with:
+
+VERIFY/FREEZE_DEMO_SHA256.txt
+
+The values must match exactly.
+
+If the values do not match, stop verification.
+
+
+2. START A LOCAL SERVER
+
+Run from the repository root.
+
+Windows:
+
+python -m http.server 8000
+
+macOS / Linux:
+
+python3 -m http.server 8000
+
+Open:
+
+http://localhost:8000/demo/STRIDE_v1_1_3.html
+
+
+3. VERIFY THE VERSION
+
+Open the browser developer console.
+
+Run:
+
+STRIDE.version()
+
+Expected:
+
+1.1.3
+
+
+4. VERIFY THE REFERENCE STATUS
+
+Run:
+
+STRIDE.release()
+
+Confirm that the returned object identifies:
+
+version = 1.1.3
+
+status = REFERENCE_ARCHITECTURE_VALIDATED
+
+qualification.suite_id = stride.qualification/346
+
+Confirm that the declared claim boundary does not represent STRIDE as production safety certified.
+
+Governing boundary:
+
+reference_architecture_validated != production_safety_certified
+
+
+5. RUN THE RELEASE AUDIT
+
+Run:
+
+STRIDE.releaseAudit()
+
+Expected:
+
+allPass = true
+
+
+6. RUN THE USER-INTERFACE AUDIT
+
+Run:
+
+STRIDE.uiAudit()
+
+Expected:
+
+allPass = true
+
+
+7. RUN THE CORE AUDIT
+
+Run:
+
+STRIDE.coreAudit()
+
+Expected:
+
+allPass = true
+
+
+8. RUN THE PERFORMANCE AUDIT
+
+Run:
+
+STRIDE.performanceAudit()
+
+Expected:
+
+allPass = true
+
+Before the full qualification is requested, verification must remain unloaded.
+
+Expected runtime condition:
+
+runtime_does_not_load_verification_until_requested
+
+
+9. RUN THE GEOMETRY AUDIT
+
+Run:
+
+STRIDE.geometryStatus()
+
+Expected:
+
+allPass = true
+
+
+10. RUN THE VIEWPORT AUDIT
+
+Run:
+
+STRIDE.viewportAudit()
+
+Expected:
+
+allPass = true
+
+
+11. VERIFY THE AMBIGUOUS SCENARIO
+
+Select:
+
+AMBIGUOUS
+
+Press:
+
+EVALUATE
+
+Expected:
+
+INCOMPLETE
+
+Expected structural result:
+
+target_not_unique -> no_target_specific_authority
+
+No Motion Contract must be created.
+
+
+12. VERIFY THE CONFLICT SCENARIO
+
+Select:
+
+CONFLICT
+
+Press:
+
+EVALUATE
+
+Expected:
+
+CONFLICT
+
+Expected structural result:
+
+conflicting_required_observations -> CONFLICT
+
+No Motion Contract must be created.
+
+
+13. VERIFY THE HUMAN-ZONE SCENARIO
+
+Select:
+
+HUMAN ZONE
+
+Press:
+
+EVALUATE
+
+Expected:
+
+FORBIDDEN
+
+Expected structural result:
+
+human_in_protected_zone -> no_motion_authority
+
+No Motion Contract must be created.
+
+
+14. VERIFY THE FORBIDDEN-CONTACT SCENARIO
+
+Select:
+
+FORBIDDEN
+
+Press:
+
+EVALUATE
+
+Expected:
+
+FORBIDDEN
+
+Expected structural result:
+
+reachable != contact_admissible
+
+No Motion Contract must be created.
+
+
+15. VERIFY THE EXCESS-FORCE SCENARIO
+
+Select:
+
+EXCESS FORCE
+
+Press:
+
+EVALUATE
+
+Expected:
+
+FORBIDDEN
+
+Expected structural result:
+
+requested_force > permitted_force -> FORBIDDEN
+
+No Motion Contract must be created.
+
+
+16. VERIFY THE RESOLVED SCENARIO
+
+Select:
+
+RESOLVED
+
+Press:
+
+EVALUATE
+
+Expected:
+
+RESOLVED
+
+Confirm:
+
+target is unique
+
+path is clear
+
+protected human zone is clear
+
+contact is permitted
+
+requested force is within the permitted limit
+
+recovery is defined
+
+a bounded Motion Contract is available
+
+
+17. VERIFY COMPLETE EXECUTION
+
+After the resolved evaluation, press:
+
+EXECUTE
+
+Expected phase sequence:
+
+APPROACH -> CONTACT -> LIFT -> TRANSFER -> PLACE -> RETURN -> COMPLETED
+
+Confirm:
+
+the robot approaches the selected object
+
+the gripper reaches the target
+
+the object attaches
+
+the object is lifted
+
+the object moves with the gripper
+
+the object is placed in Zone B
+
+the object is released
+
+the robot returns home
+
+the final state is COMPLETED
+
+
+18. VERIFY COMPLETION CLEANUP
+
+After completion, confirm:
+
+the object remains at the destination
+
+the gripper is not carrying the object
+
+the robot is home
+
+no active motion phase remains
+
+no active scheduler remains
+
+Expected invariant:
+
+COMPLETED -> no_active_scheduler
+
+
+19. VERIFY PAUSE BEHAVIOR
+
+Reset the observatory.
+
+Select:
+
+RESOLVED
+
+Press:
+
+EVALUATE
+
+Press:
+
+EXECUTE
+
+Press:
+
+PAUSE
+
+Confirm:
+
+the phase displays MOTION PAUSED
+
+the control changes from PAUSE to RESUME
+
+motion animation stops
+
+phase progression stops
+
+the interface remains responsive
+
+reset remains available
+
+the carried-object state remains coherent
+
+Run:
+
+STRIDE.runtimeStatus()
+
+Expected:
+
+paused = true
+
+animation_active = false
+
+phase_timer_active = false
+
+
+20. VERIFY RESUME REVALIDATION
+
+While paused, change a mandatory condition to an invalid value.
+
+Example:
+
+set HUMAN ZONE to Occupied
+
+Press:
+
+RESUME
+
+Confirm:
+
+motion does not resume
+
+the runtime remains paused
+
+Restore the mandatory condition.
+
+Example:
+
+set HUMAN ZONE to Clear
+
+Press:
+
+RESUME
+
+Confirm:
+
+STRIDE automatically revalidates the current structure
+
+motion resumes only when the structure is again RESOLVED
+
+Expected invariants:
+
+resume_request + invalid_structure -> remain_paused
+
+PAUSED + renewed_validity -> RESUME
+
+A separate manual EVALUATE step is not required before pressing RESUME.
+
+
+21. RUN THE COMPLETE QUALIFICATION
+
+Press:
+
+RUN 346-CASE AUDIT
+
+Or run:
+
+(async () => {
+  const report = await STRIDE.audit();
+  console.log(report);
+})();
+
+Expected:
+
+runtime_release_version = 1.1.3
+
+inherited_kernel_version = 1.0.1
+
+qualification_suite_id = stride.qualification/346
+
+allPass = true
+
+total_case_count = 346
+
+unsafe_admissions = 0
+
+
+22. DOWNLOAD AND COMPARE THE REPORT
+
+After qualification completes, download the report.
+
+Compare it with:
+
+evidence/STRIDE_v1_1_3_346_Case_Qualification_Report.json
+
+Also review:
+
+evidence/QUALIFICATION_SUMMARY.md
+
+evidence/EXPECTED_RESULTS.json
+
+evidence/STRIDE_v1_1_3_RELEASE_MANIFEST.json
+
+Timing values may vary by browser and hardware.
+
+Structural results must remain equivalent.
+
+
+23. DETERMINISM CHECK
+
+Repeat the resolved evaluation.
+
+Expected:
+
+same structure + same policy -> same admission
+
+Repeat certificate generation.
+
+Expected:
+
+same normalized evidence -> same certificate identity
+
+Repeat the qualification.
+
+Expected:
+
+allPass = true
+
+total_case_count = 346
+
+unsafe_admissions = 0
+
+
+24. FAILURE CONDITIONS
+
+Verification fails if any of the following occur:
+
+the HTML checksum does not match
+
+the reported version is not 1.1.3
+
+a declared audit returns allPass = false
+
+a non-resolved scenario creates a Motion Contract
+
+an unsafe scenario becomes admitted
+
+pause does not stop execution
+
+resume occurs without renewed structural validity
+
+completion leaves an active scheduler
+
+the qualification does not complete 346 cases
+
+unsafe_admissions is greater than 0
+
+equivalent structure produces inconsistent admission
+
+
+25. VERIFICATION RESULT
+
+A successful result establishes reproduction of the bounded STRIDE v1.1.3 reference behavior.
+
+It does not establish:
+
+certified functional safety
+
+physical robot validation
+
+actuator-level enforcement
+
+measured stopping performance
+
+secure production cryptography
+
+regulatory approval
+
+production deployment readiness
+
+
+FINAL INVARIANTS
+
+intelligence_proposes; structure_permits
+
+intention != execution_permission
+
+capability != permission
+
+non_resolved_structure -> no_motion_contract
+
+no_valid_motion_contract -> no_authorized_motion
+
+previous_permission != permanent_permission
+
+reference_architecture_validated != production_safety_certified

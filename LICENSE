@@ -1,0 +1,106 @@
+Open Use License — STRIDE Reference Implementation
+
+STRIDE — Structural Robotic Intention and Deterministic Execution
+
+STRIDE is a reference implementation developed within the Shunyaya Framework.
+
+1. Permission
+
+Permission is granted, free of charge, to any person or organization to use, execute, study, copy, publish, distribute, modify, implement, and extend the STRIDE reference implementation.
+
+Commercial and non-commercial use are permitted.
+
+No registration, fee, or prior approval is required.
+
+2. Conditions
+
+Copies or substantial portions of the reference implementation must include this license notice.
+
+Modified versions must not be presented as the unchanged canonical STRIDE reference implementation.
+
+Modified versions should clearly state that changes were made.
+
+Use of the STRIDE name must not imply:
+
+endorsement
+
+official conformance
+
+certification
+
+safety approval
+
+regulatory approval
+
+production readiness
+
+Attribution is not required for materials governed solely by this Open Use License.
+
+When attribution is provided, the following form is appreciated:
+
+STRIDE — Structural Robotic Intention and Deterministic Execution
+(A Shunyaya Framework reference implementation)
+
+Attribution must not imply endorsement, certification, official conformance, safety approval, or regulatory approval.
+
+3. Scope
+
+This Open Use License applies to the STRIDE reference implementation and implementation-specific evidence unless an individual file states otherwise.
+
+Conceptual architecture and explanatory documentation are licensed separately under:
+
+Creative Commons Attribution-NonCommercial 4.0 International
+
+CC BY-NC 4.0
+
+Commercial permission granted for the reference implementation does not automatically extend to materials governed by CC BY-NC 4.0.
+
+4. Reference and Safety Boundary
+
+STRIDE is a reference implementation.
+
+It is not:
+
+certified functional safety software
+
+a production robot controller
+
+a certified physical safety system
+
+physical robot validation
+
+secure production cryptography
+
+regulatory approval
+
+unrestricted deployment authority
+
+Successful simulation, verification, or qualification does not establish physical safety certification.
+
+Any physical deployment requires independent engineering, hazard analysis, safety controls, validation, testing, and compliance with applicable laws, standards, and regulations.
+
+5. Responsibility
+
+Use, modification, distribution, implementation, or deployment of STRIDE is entirely at the user's own responsibility.
+
+No endorsement, certification, official conformance, or safety approval is granted through this license.
+
+6. No Warranty
+
+THE STRIDE REFERENCE IMPLEMENTATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+
+THIS INCLUDES, WITHOUT LIMITATION, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, SAFETY, RELIABILITY, AVAILABILITY, OR REGULATORY COMPLIANCE.
+
+IN NO EVENT SHALL ANY PARTY PROVIDING OR DISTRIBUTING STRIDE BE LIABLE FOR ANY CLAIM, DAMAGE, LOSS, INJURY, PROPERTY DAMAGE, SYSTEM FAILURE, OR OTHER LIABILITY ARISING FROM ITS USE, MODIFICATION, DISTRIBUTION, IMPLEMENTATION, OR DEPLOYMENT.
+
+7. General
+
+No ownership of the STRIDE or Shunyaya names, and no exclusive rights to those names, are transferred through this license.
+
+This license permits factual use of those names only for attribution and identification of the reference implementation.
+
+This is a custom Open Use License.
+
+It is not represented as an OSI-approved open-source license, an official standard, a certification, or approval by a regulatory body.
+
+If any provision is found unenforceable, the remaining provisions remain in effect.

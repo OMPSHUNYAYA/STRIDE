@@ -1,0 +1,1418 @@
+{
+  "version": "1.1.3",
+  "inherited_kernel_version": "1.0.1",
+  "allPass": true,
+  "total_case_count": 346,
+  "case_count": 6,
+  "core_case_count": 22,
+  "falsification_case_count": 172,
+  "twin_case_count": 12,
+  "adapter_case_count": 18,
+  "hil_case_count": 24,
+  "pilot_case_count": 22,
+  "production_case_count": 32,
+  "deployment_case_count": 38,
+  "unsafe_admissions": 0,
+  "elapsed_ms": 5093,
+  "cases": [
+    {
+      "scenario": "ambiguous",
+      "expected": "INCOMPLETE",
+      "actual": "INCOMPLETE",
+      "pass": true
+    },
+    {
+      "scenario": "conflict",
+      "expected": "CONFLICT",
+      "actual": "CONFLICT",
+      "pass": true
+    },
+    {
+      "scenario": "human",
+      "expected": "FORBIDDEN",
+      "actual": "FORBIDDEN",
+      "pass": true
+    },
+    {
+      "scenario": "forbidden",
+      "expected": "FORBIDDEN",
+      "actual": "FORBIDDEN",
+      "pass": true
+    },
+    {
+      "scenario": "force",
+      "expected": "FORBIDDEN",
+      "actual": "FORBIDDEN",
+      "pass": true
+    },
+    {
+      "scenario": "resolved",
+      "expected": "RESOLVED",
+      "actual": "RESOLVED",
+      "pass": true
+    }
+  ],
+  "core": {
+    "additional_case_count": 14,
+    "additional_cases": [
+      {
+        "name": "canonical_key_order",
+        "pass": true
+      },
+      {
+        "name": "policy_identity_present",
+        "pass": true
+      },
+      {
+        "name": "resolved_contract_present",
+        "pass": true
+      },
+      {
+        "name": "unresolved_contract_withheld",
+        "pass": true
+      },
+      {
+        "name": "portable_vector_count",
+        "pass": true
+      },
+      {
+        "name": "portable_conformance",
+        "pass": true
+      },
+      {
+        "name": "replay_identity_64",
+        "pass": true
+      },
+      {
+        "name": "input_key_order_identity",
+        "pass": true
+      },
+      {
+        "name": "mutation_changes_result",
+        "pass": true
+      },
+      {
+        "name": "manifest_dom_independent",
+        "pass": true
+      },
+      {
+        "name": "pause_preserves_underlying",
+        "pass": true
+      },
+      {
+        "name": "schema_version_consistency",
+        "pass": true
+      },
+      {
+        "name": "stale_world_fails_closed",
+        "pass": true
+      },
+      {
+        "name": "tampered_policy_fails_closed",
+        "pass": true
+      }
+    ],
+    "allPass": true,
+    "case_count": 8,
+    "cases": [
+      {
+        "actual": "INCOMPLETE",
+        "deterministic": true,
+        "expected": "INCOMPLETE",
+        "name": "ambiguous",
+        "pass": true
+      },
+      {
+        "actual": "CONFLICT",
+        "deterministic": true,
+        "expected": "CONFLICT",
+        "name": "conflict",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "deterministic": true,
+        "expected": "INCOMPLETE",
+        "name": "stale_vision",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "deterministic": true,
+        "expected": "FORBIDDEN",
+        "name": "human",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "deterministic": true,
+        "expected": "FORBIDDEN",
+        "name": "forbidden_contact",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "deterministic": true,
+        "expected": "FORBIDDEN",
+        "name": "force_exceeded",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "deterministic": true,
+        "expected": "FORBIDDEN",
+        "name": "runtime_corrupt",
+        "pass": true
+      },
+      {
+        "actual": "RESOLVED",
+        "deterministic": true,
+        "expected": "RESOLVED",
+        "name": "resolved",
+        "pass": true
+      }
+    ],
+    "conformance_report_fingerprint": "report_431a312bef36c8c7",
+    "total_case_count": 22,
+    "vector_pack_fingerprint": "vectors_12f3a0d1fc86f77d",
+    "version": "1.0.1"
+  },
+  "falsification": {
+    "allPass": true,
+    "attack_case_count": 28,
+    "attacks": [
+      {
+        "actual": "INCOMPLETE",
+        "name": "empty_input",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "null_input",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "array_input",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "ambiguous_target",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "missing_target",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "missing_destination",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "unknown_contact",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "missing_recovery",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "unknown_path",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "stale_vision",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "stale_proximity",
+        "pass": true
+      },
+      {
+        "actual": "CONFLICT",
+        "name": "sensor_conflict",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "human_boundary",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "forbidden_contact",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "force_exceeded",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "negative_force",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "nan_force",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "invalid_policy_limit",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "unknown_source",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "unknown_action",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "unknown_target",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "unknown_destination",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "blocked_path",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "runtime_corrupt",
+        "pass": true
+      },
+      {
+        "actual": "PAUSED",
+        "name": "manual_pause",
+        "pass": true
+      },
+      {
+        "identity": "result_c142e47ff242769b",
+        "name": "key_order_identity",
+        "pass": true
+      },
+      {
+        "name": "replay_identity_128",
+        "pass": true,
+        "unique": 1
+      },
+      {
+        "actual": "RESOLVED",
+        "name": "resolved_control",
+        "pass": true
+      }
+    ],
+    "bounded_claim": "Survived the published deterministic falsification domain; not universal proof or safety certification.",
+    "fault_case_count": 10,
+    "faults": [
+      {
+        "actual": "INCOMPLETE",
+        "name": "world_missing",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "policy_missing",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "capsule_missing",
+        "pass": true
+      },
+      {
+        "actual": "INCOMPLETE",
+        "name": "vision_stale_direct",
+        "pass": true
+      },
+      {
+        "actual": "CONFLICT",
+        "name": "target_world_mismatch",
+        "pass": true
+      },
+      {
+        "actual": "CONFLICT",
+        "name": "destination_world_mismatch",
+        "pass": true
+      },
+      {
+        "actual": "CONFLICT",
+        "name": "path_world_mismatch",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "policy_value_tamper",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "policy_list_tamper",
+        "pass": true
+      },
+      {
+        "actual": "FORBIDDEN",
+        "name": "runtime_object_missing",
+        "pass": true
+      }
+    ],
+    "fixed_case_count": 38,
+    "fuzz": {
+      "allPass": true,
+      "count": 128,
+      "deterministic_failures": 0,
+      "failed_cases": [],
+      "property_failures": 0,
+      "report_fingerprint": "fuzz_59dca01a49acf1be",
+      "seed": 7180,
+      "throws": 0,
+      "unsafe_admissions": 0
+    },
+    "fuzz_case_count": 128,
+    "kernel_version": "1.0.1",
+    "replay_rejections": 1,
+    "report_fingerprint": "falsification_b7e0b01ebd5e30b2",
+    "schema": "stride.falsification_report/1.0",
+    "tamper": {
+      "allPass": true,
+      "case_count": 6,
+      "cases": [
+        {
+          "details": {
+            "recomputed": "proof_73a3afad41804339",
+            "supplied": "proof_73a3afad41804339",
+            "valid": true
+          },
+          "name": "original_proof_valid",
+          "pass": true
+        },
+        {
+          "details": {
+            "recomputed": "proof_be6ffdb44e2a2f60",
+            "supplied": "proof_73a3afad41804339",
+            "valid": false
+          },
+          "name": "tampered_proof_rejected",
+          "pass": true
+        },
+        {
+          "details": {
+            "recomputed": "contract_3018792cba2ed528",
+            "supplied": "contract_3018792cba2ed528",
+            "valid": true
+          },
+          "name": "original_contract_valid",
+          "pass": true
+        },
+        {
+          "details": {
+            "recomputed": "contract_98da41a2f015187e",
+            "supplied": "contract_3018792cba2ed528",
+            "valid": false
+          },
+          "name": "tampered_contract_rejected",
+          "pass": true
+        },
+        {
+          "name": "first_contract_use_accepted",
+          "pass": true
+        },
+        {
+          "name": "replayed_contract_rejected",
+          "pass": true
+        }
+      ],
+      "integrity_scope": "deterministic corruption detection; not cryptographic authentication",
+      "replay_rejections": 1,
+      "tamper_detections": 2
+    },
+    "tamper_detections": 2,
+    "total_case_count": 172,
+    "unsafe_admissions": 0,
+    "version": "1.0.1"
+  },
+  "twin": {
+    "additional_case_count": 5,
+    "additional_cases": [
+      {
+        "name": "fixed_step",
+        "pass": true
+      },
+      {
+        "name": "braking_nonnegative",
+        "pass": true
+      },
+      {
+        "name": "velocity_bounded",
+        "pass": true
+      },
+      {
+        "name": "workspace_contained",
+        "pass": true
+      },
+      {
+        "name": "replay_identity_32",
+        "pass": true
+      }
+    ],
+    "allPass": true,
+    "bounded_claim": "Deterministic continuous simulation within the published tabletop digital-twin model; not physical certification.",
+    "case_count": 7,
+    "cases": [
+      {
+        "actual": "COMPLETE",
+        "deterministic": true,
+        "expected": "COMPLETE",
+        "name": "baseline",
+        "pass": true,
+        "trace_fingerprint": "twincase_bfc69a9b5d357aa7"
+      },
+      {
+        "actual": "PAUSED",
+        "deterministic": true,
+        "expected": "PAUSED",
+        "name": "moving_obstacle",
+        "pass": true,
+        "trace_fingerprint": "twincase_296de5861ddd9132"
+      },
+      {
+        "actual": "PAUSED",
+        "deterministic": true,
+        "expected": "PAUSED",
+        "name": "sensor_delay",
+        "pass": true,
+        "trace_fingerprint": "twincase_ec88138f6445239b"
+      },
+      {
+        "actual": "PAUSED",
+        "deterministic": true,
+        "expected": "PAUSED",
+        "name": "sensor_dropout",
+        "pass": true,
+        "trace_fingerprint": "twincase_f1aa3f1efa1d0442"
+      },
+      {
+        "actual": "ABORTED",
+        "deterministic": true,
+        "expected": "ABORTED",
+        "name": "force_spike",
+        "pass": true,
+        "trace_fingerprint": "twincase_ab6a073d55e55ce1"
+      },
+      {
+        "actual": "ABORTED",
+        "deterministic": true,
+        "expected": "ABORTED",
+        "name": "recovery_loss",
+        "pass": true,
+        "trace_fingerprint": "twincase_e3000d29e2b9279d"
+      },
+      {
+        "actual": "ABORTED",
+        "deterministic": true,
+        "expected": "ABORTED",
+        "name": "emergency_stop",
+        "pass": true,
+        "trace_fingerprint": "twincase_44746191ae49a305"
+      }
+    ],
+    "parameters": {
+      "brake_acceleration_mps2": 2.15,
+      "dt_s": 0.016666666666666666,
+      "max_acceleration_mps2": 1.55,
+      "max_speed_mps": 0.6125,
+      "safe_clearance_m": 0.145,
+      "sensor_freshness_limit_ms": 500
+    },
+    "report_fingerprint": "twinreport_f58af5be582ffe52",
+    "schema": "stride.digital_twin_report/1.0",
+    "total_case_count": 12,
+    "version": "1.0.1"
+  },
+  "adapter": {
+    "allPass": true,
+    "bounded_claim": "Deterministic browser reference adapter qualification; not a live middleware or physical robot certification.",
+    "case_count": 18,
+    "cases": [
+      {
+        "name": "profile_schema",
+        "pass": true
+      },
+      {
+        "name": "vendor_neutral_profile",
+        "pass": true
+      },
+      {
+        "name": "managed_lifecycle_declared",
+        "pass": true
+      },
+      {
+        "name": "action_semantics_complete",
+        "pass": true
+      },
+      {
+        "name": "security_boundary_declared",
+        "pass": true
+      },
+      {
+        "name": "unresolved_contract_withheld",
+        "pass": true
+      },
+      {
+        "name": "resolved_translation_exists",
+        "pass": true
+      },
+      {
+        "name": "translation_deterministic",
+        "pass": true
+      },
+      {
+        "name": "token_integrity_valid",
+        "pass": true
+      },
+      {
+        "name": "token_contract_binding",
+        "pass": true
+      },
+      {
+        "name": "token_policy_binding",
+        "pass": true
+      },
+      {
+        "name": "token_capsule_binding",
+        "pass": true
+      },
+      {
+        "name": "inactive_gateway_rejects",
+        "pass": true
+      },
+      {
+        "name": "tampered_token_rejected",
+        "pass": true
+      },
+      {
+        "name": "audience_mismatch_rejected",
+        "pass": true
+      },
+      {
+        "name": "policy_mismatch_rejected",
+        "pass": true
+      },
+      {
+        "name": "one_use_token_first_accept",
+        "pass": true
+      },
+      {
+        "name": "token_replay_rejected",
+        "pass": true
+      }
+    ],
+    "profile_fingerprint": "adapterprofile_85bd393a418f181e",
+    "report_fingerprint": "adapterreport_e608fd37c94b1cc3",
+    "schema": "stride.middleware_qualification/1.0",
+    "total_case_count": 18,
+    "version": "1.0.1"
+  },
+  "hil": {
+    "additional_case_count": 9,
+    "additional_cases": [
+      {
+        "name": "profile_is_motion_disabled_reference",
+        "pass": true
+      },
+      {
+        "name": "independent_safety_inputs_declared",
+        "pass": true
+      },
+      {
+        "name": "same_structure_same_packet",
+        "pass": true
+      },
+      {
+        "name": "sequence_mutation_changes_packet",
+        "pass": true
+      },
+      {
+        "name": "trace_order_canonical_identity",
+        "pass": true
+      },
+      {
+        "name": "all_terminal_outputs_deenergized",
+        "pass": true
+      },
+      {
+        "name": "replay_detected",
+        "pass": true
+      },
+      {
+        "name": "watchdog_loss_safe",
+        "pass": true
+      },
+      {
+        "name": "restart_invalidates_authority",
+        "pass": true
+      }
+    ],
+    "allPass": true,
+    "bounded_claim": "Deterministic constrained motion-disabled controller harness qualification; not physical hardware or safety certification.",
+    "case_count": 15,
+    "cases": [
+      {
+        "actual": "COMPLETE",
+        "actuator_enable": false,
+        "expected": "COMPLETE",
+        "name": "valid",
+        "pass": true,
+        "reason": "TERMINAL_RESULT_CONFIRMED"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "missing_token",
+        "pass": true,
+        "reason": "TOKEN_MISSING_OR_MALFORMED"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "tamper",
+        "pass": true,
+        "reason": "COMMAND_PACKET_INTEGRITY_FAILURE"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "replay",
+        "pass": true,
+        "reason": "HIL_PACKET_REPLAY_DETECTED"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "policy_mismatch",
+        "pass": true,
+        "reason": "TOKEN_POLICY_MISMATCH"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "disconnected",
+        "pass": true,
+        "reason": "CONTROLLER_DISCONNECTED"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "watchdog",
+        "pass": true,
+        "reason": "WATCHDOG_EXPIRED"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "heartbeat",
+        "pass": true,
+        "reason": "HEARTBEAT_EXPIRED"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "network",
+        "pass": true,
+        "reason": "COMMAND_ACK_TIMEOUT"
+      },
+      {
+        "actual": "SAFE_DISABLED",
+        "actuator_enable": false,
+        "expected": "SAFE_DISABLED",
+        "name": "restart",
+        "pass": true,
+        "reason": "CONTROLLER_RESTART_INVALIDATED_AUTHORITY"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "estop",
+        "pass": true,
+        "reason": "EMERGENCY_STOP_ACTIVE"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "safety_open",
+        "pass": true,
+        "reason": "SAFETY_CHAIN_OPEN"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "feedback_stall",
+        "pass": true,
+        "reason": "CONTROLLER_FEEDBACK_STALL"
+      },
+      {
+        "actual": "CANCELED",
+        "actuator_enable": false,
+        "expected": "CANCELED",
+        "name": "cancel",
+        "pass": true,
+        "reason": "OPERATOR_CANCEL_WITHDREW_AUTHORITY"
+      },
+      {
+        "actual": "FAULT",
+        "actuator_enable": false,
+        "expected": "FAULT",
+        "name": "stuck_enable",
+        "pass": true,
+        "reason": "ENABLE_FEEDBACK_MISMATCH_INDEPENDENT_GATE_OFF"
+      },
+      {
+        "name": "profile_is_motion_disabled_reference",
+        "pass": true
+      },
+      {
+        "name": "independent_safety_inputs_declared",
+        "pass": true
+      },
+      {
+        "name": "same_structure_same_packet",
+        "pass": true
+      },
+      {
+        "name": "sequence_mutation_changes_packet",
+        "pass": true
+      },
+      {
+        "name": "trace_order_canonical_identity",
+        "pass": true
+      },
+      {
+        "name": "all_terminal_outputs_deenergized",
+        "pass": true
+      },
+      {
+        "name": "replay_detected",
+        "pass": true
+      },
+      {
+        "name": "watchdog_loss_safe",
+        "pass": true
+      },
+      {
+        "name": "restart_invalidates_authority",
+        "pass": true
+      }
+    ],
+    "profile_fingerprint": "hilprofile_37f7aa7afb03712e",
+    "report_fingerprint": "hilreport_483e78dbb5974c9f",
+    "scenario_cases": [
+      {
+        "actual": "COMPLETE",
+        "actuator_enable": false,
+        "expected": "COMPLETE",
+        "name": "valid",
+        "pass": true,
+        "reason": "TERMINAL_RESULT_CONFIRMED"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "missing_token",
+        "pass": true,
+        "reason": "TOKEN_MISSING_OR_MALFORMED"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "tamper",
+        "pass": true,
+        "reason": "COMMAND_PACKET_INTEGRITY_FAILURE"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "replay",
+        "pass": true,
+        "reason": "HIL_PACKET_REPLAY_DETECTED"
+      },
+      {
+        "actual": "REJECTED",
+        "actuator_enable": false,
+        "expected": "REJECTED",
+        "name": "policy_mismatch",
+        "pass": true,
+        "reason": "TOKEN_POLICY_MISMATCH"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "disconnected",
+        "pass": true,
+        "reason": "CONTROLLER_DISCONNECTED"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "watchdog",
+        "pass": true,
+        "reason": "WATCHDOG_EXPIRED"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "heartbeat",
+        "pass": true,
+        "reason": "HEARTBEAT_EXPIRED"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "network",
+        "pass": true,
+        "reason": "COMMAND_ACK_TIMEOUT"
+      },
+      {
+        "actual": "SAFE_DISABLED",
+        "actuator_enable": false,
+        "expected": "SAFE_DISABLED",
+        "name": "restart",
+        "pass": true,
+        "reason": "CONTROLLER_RESTART_INVALIDATED_AUTHORITY"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "estop",
+        "pass": true,
+        "reason": "EMERGENCY_STOP_ACTIVE"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "safety_open",
+        "pass": true,
+        "reason": "SAFETY_CHAIN_OPEN"
+      },
+      {
+        "actual": "SAFE_STOP",
+        "actuator_enable": false,
+        "expected": "SAFE_STOP",
+        "name": "feedback_stall",
+        "pass": true,
+        "reason": "CONTROLLER_FEEDBACK_STALL"
+      },
+      {
+        "actual": "CANCELED",
+        "actuator_enable": false,
+        "expected": "CANCELED",
+        "name": "cancel",
+        "pass": true,
+        "reason": "OPERATOR_CANCEL_WITHDREW_AUTHORITY"
+      },
+      {
+        "actual": "FAULT",
+        "actuator_enable": false,
+        "expected": "FAULT",
+        "name": "stuck_enable",
+        "pass": true,
+        "reason": "ENABLE_FEEDBACK_MISMATCH_INDEPENDENT_GATE_OFF"
+      }
+    ],
+    "schema": "stride.hil_qualification/1.0",
+    "total_case_count": 24,
+    "unsafe_physical_enables": 0,
+    "version": "1.0.1"
+  },
+  "pilot": {
+    "allPass": true,
+    "bounded_claim": "Restricted low-force pilot architecture qualification for a declared tabletop domain; not unrestricted physical deployment.",
+    "case_count": 22,
+    "cases": [
+      {
+        "name": "profile_declares_low_force_domain",
+        "pass": true
+      },
+      {
+        "name": "profile_declares_independent_estop",
+        "pass": true
+      },
+      {
+        "name": "profile_approved_objects",
+        "pass": true
+      },
+      {
+        "name": "profile_recovery_defined",
+        "pass": true
+      },
+      {
+        "name": "operator_checklist_all_pass",
+        "pass": true
+      },
+      {
+        "name": "resolved_action_admissible",
+        "pass": true
+      },
+      {
+        "name": "ambiguous_target_withheld",
+        "pass": true
+      },
+      {
+        "name": "sensor_conflict_withheld",
+        "pass": true
+      },
+      {
+        "name": "human_zone_forbidden",
+        "pass": true
+      },
+      {
+        "name": "force_violation_forbidden",
+        "pass": true
+      },
+      {
+        "name": "contact_forbidden_withheld",
+        "pass": true
+      },
+      {
+        "name": "recovery_required",
+        "pass": true
+      },
+      {
+        "name": "path_blocked_withheld",
+        "pass": true
+      },
+      {
+        "name": "twin_baseline_complete",
+        "pass": true
+      },
+      {
+        "name": "twin_obstacle_pauses",
+        "pass": true
+      },
+      {
+        "name": "twin_force_aborts",
+        "pass": true
+      },
+      {
+        "name": "adapter_boundary_intact",
+        "pass": true
+      },
+      {
+        "name": "hil_valid_completes",
+        "pass": true
+      },
+      {
+        "name": "hil_estop_safe_stop",
+        "pass": true
+      },
+      {
+        "name": "hil_replay_rejected",
+        "pass": true
+      },
+      {
+        "name": "hil_network_safe_stop",
+        "pass": true
+      },
+      {
+        "name": "hil_unsafe_enable_zero",
+        "pass": true
+      }
+    ],
+    "profile_fingerprint": "pilotprofile_6724f6daa05c6bfe",
+    "report_fingerprint": "pilotreport_05d20556d745f1ea",
+    "schema": "stride.restricted_physical_pilot_report/1.0",
+    "total_case_count": 22,
+    "version": "1.0.1"
+  },
+  "production": {
+    "allPass": true,
+    "bounded_claim": "Production candidate architecture qualification for the restricted tabletop domain; not certified production deployment.",
+    "case_count": 32,
+    "cases": [
+      {
+        "name": "manifest_schema",
+        "pass": true
+      },
+      {
+        "name": "manifest_release_identity",
+        "pass": true
+      },
+      {
+        "name": "manifest_operating_domain_bounded",
+        "pass": true
+      },
+      {
+        "name": "manifest_rollback_required",
+        "pass": true
+      },
+      {
+        "name": "manifest_anti_replay_required",
+        "pass": true
+      },
+      {
+        "name": "release_envelope_valid",
+        "pass": true
+      },
+      {
+        "name": "policy_envelope_valid",
+        "pass": true
+      },
+      {
+        "name": "capsule_envelope_valid",
+        "pass": true
+      },
+      {
+        "name": "tampered_policy_rejected",
+        "pass": true
+      },
+      {
+        "name": "tampered_manifest_rejected",
+        "pass": true
+      },
+      {
+        "name": "unknown_signer_rejected",
+        "pass": true
+      },
+      {
+        "name": "key_epoch_bound",
+        "pass": true
+      },
+      {
+        "name": "operator_execute_allowed",
+        "pass": true
+      },
+      {
+        "name": "auditor_execute_denied",
+        "pass": true
+      },
+      {
+        "name": "safety_engineer_policy_approval",
+        "pass": true
+      },
+      {
+        "name": "release_authority_deploy",
+        "pass": true
+      },
+      {
+        "name": "service_technician_motion_denied",
+        "pass": true
+      },
+      {
+        "name": "dual_control_separated",
+        "pass": true
+      },
+      {
+        "name": "configuration_downgrade_rejected",
+        "pass": true
+      },
+      {
+        "name": "diagnostics_all_pass",
+        "pass": true
+      },
+      {
+        "name": "core_diagnostic_pass",
+        "pass": true
+      },
+      {
+        "name": "falsification_diagnostic_pass",
+        "pass": true
+      },
+      {
+        "name": "pilot_diagnostic_pass",
+        "pass": true
+      },
+      {
+        "name": "hil_diagnostic_pass",
+        "pass": true
+      },
+      {
+        "name": "hil_unsafe_enable_zero",
+        "pass": true
+      },
+      {
+        "name": "endurance_512_pass",
+        "pass": true
+      },
+      {
+        "name": "endurance_zero_unsafe",
+        "pass": true
+      },
+      {
+        "name": "endurance_identity_stable",
+        "pass": true
+      },
+      {
+        "name": "append_only_log_identity",
+        "pass": true
+      },
+      {
+        "name": "rollback_identity_present",
+        "pass": true
+      },
+      {
+        "name": "safety_case_complete",
+        "pass": true
+      },
+      {
+        "name": "production_candidate_validates",
+        "pass": true
+      }
+    ],
+    "diagnostics_fingerprint": "diagnostics_929d27ceb215f1ca",
+    "endurance_fingerprint": "endurance_a534a3e34c362cef",
+    "manifest_id": "manifest_be50f0732b19fcc7",
+    "report_fingerprint": "productionreport_11d62a0dbbc21169",
+    "safety_case_fingerprint": "safetycase_a63dc7da5768ab9e",
+    "schema": "stride.production_qualification_report/1.0",
+    "total_case_count": 32,
+    "version": "1.0.1"
+  },
+  "deployment": {
+    "acceptance_fingerprint": "acceptance_1906f4fdc46c7f19",
+    "allPass": true,
+    "bounded_claim": "Limited production architecture qualification for the frozen supervised low-force tabletop domain; not certified functional safety or unrestricted production approval.",
+    "case_count": 38,
+    "cases": [
+      {
+        "name": "release_schema",
+        "pass": true
+      },
+      {
+        "name": "release_identity",
+        "pass": true
+      },
+      {
+        "name": "operating_domain_frozen",
+        "pass": true
+      },
+      {
+        "name": "robot_class_bounded",
+        "pass": true
+      },
+      {
+        "name": "approved_object_count",
+        "pass": true
+      },
+      {
+        "name": "approved_destination_count",
+        "pass": true
+      },
+      {
+        "name": "force_limit_frozen",
+        "pass": true
+      },
+      {
+        "name": "speed_limit_frozen",
+        "pass": true
+      },
+      {
+        "name": "payload_limit_frozen",
+        "pass": true
+      },
+      {
+        "name": "independent_estop_required",
+        "pass": true
+      },
+      {
+        "name": "supervision_required",
+        "pass": true
+      },
+      {
+        "name": "rollback_v0_9_present",
+        "pass": true
+      },
+      {
+        "name": "prohibited_uses_declared",
+        "pass": true
+      },
+      {
+        "name": "production_candidate_pass",
+        "pass": true
+      },
+      {
+        "name": "safety_case_complete",
+        "pass": true
+      },
+      {
+        "name": "pilot_qualification_pass",
+        "pass": true
+      },
+      {
+        "name": "hil_qualification_pass",
+        "pass": true
+      },
+      {
+        "name": "unsafe_enable_zero",
+        "pass": true
+      },
+      {
+        "name": "acceptance_all_pass",
+        "pass": true
+      },
+      {
+        "name": "shift_record_all_pass",
+        "pass": true
+      },
+      {
+        "name": "maintenance_plan_present",
+        "pass": true
+      },
+      {
+        "name": "maintenance_locks_motion",
+        "pass": true
+      },
+      {
+        "name": "rehearsal_1024_pass",
+        "pass": true
+      },
+      {
+        "name": "rehearsal_zero_unsafe",
+        "pass": true
+      },
+      {
+        "name": "rehearsal_identity_stable",
+        "pass": true
+      },
+      {
+        "name": "resolved_operation_admitted",
+        "pass": true
+      },
+      {
+        "name": "ambiguous_operation_withheld",
+        "pass": true
+      },
+      {
+        "name": "sensor_conflict_withheld",
+        "pass": true
+      },
+      {
+        "name": "stale_evidence_withheld",
+        "pass": true
+      },
+      {
+        "name": "human_entry_forbidden",
+        "pass": true
+      },
+      {
+        "name": "force_violation_forbidden",
+        "pass": true
+      },
+      {
+        "name": "unapproved_object_forbidden",
+        "pass": true
+      },
+      {
+        "name": "moving_obstacle_pauses",
+        "pass": true
+      },
+      {
+        "name": "network_loss_safe_stop",
+        "pass": true
+      },
+      {
+        "name": "estop_safe_stop",
+        "pass": true
+      },
+      {
+        "name": "authority_replay_rejected",
+        "pass": true
+      },
+      {
+        "name": "field_package_complete",
+        "pass": true
+      },
+      {
+        "name": "field_package_deterministic",
+        "pass": true
+      }
+    ],
+    "field_package_fingerprint": "fieldpackage_708003629f972736",
+    "profile_fingerprint": "deploymentprofile_aa27c4bab8d140e6",
+    "rehearsal_fingerprint": "fieldrehearsal_0ce7be3e43e8972a",
+    "report_fingerprint": "deploymentreport_d9b60900b137c904",
+    "schema": "stride.limited_production_qualification/1.0",
+    "total_case_count": 38,
+    "version": "1.0.1"
+  },
+  "ui": {
+    "allPass": true,
+    "missing": [],
+    "populated": {
+      "conditions": 10,
+      "capsule": 241,
+      "events": 22,
+      "specification": 522,
+      "invariants": 10,
+      "kernelManifest": 734,
+      "conformance": 684,
+      "falsification": 2625,
+      "fuzz": 222,
+      "twin": 180,
+      "twinTrace": 180,
+      "adapterProfile": 180,
+      "adapterQualification": 180,
+      "hilProfile": 180,
+      "hilQualification": 180,
+      "hilGuarantees": 180,
+      "pilotProfile": 180,
+      "pilotChecklist": 180,
+      "pilotStatus": 180,
+      "pilotEvidence": 180,
+      "pilotQualification": 180,
+      "productionManifest": 180,
+      "productionStatus": 180,
+      "productionEnvelopes": 180,
+      "productionQualification": 180,
+      "safetyCase": 180,
+      "limitedProfile": 180,
+      "limitedStatus": 180,
+      "limitedAcceptance": 180,
+      "limitedQualification": 180,
+      "fieldReadiness": 180
+    }
+  },
+  "architecture": "runtime_first_plus_on_demand_worker",
+  "law": "optimization_must_not_change_admission_truth",
+  "visual_law": "visual_activity_must_reflect_runtime_truth",
+  "runtime_release_version": "1.1.3",
+  "qualification_suite_id": "stride.qualification/346"
+}

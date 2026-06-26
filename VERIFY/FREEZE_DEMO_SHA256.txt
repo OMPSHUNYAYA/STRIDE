@@ -1,0 +1,15 @@
+STRIDE v1.1.3 Frozen Demo SHA-256
+
+File:
+demo/STRIDE_v1_1_3.html
+
+Algorithm:
+SHA-256
+
+SHA-256:
+4550091e1da5e3e6fcf54f9d641d46ca1b9200045e0f221d60cf415de633049f
+
+Windows verification command:
+certutil -hashfile demo\STRIDE_v1_1_3.html SHA256
+
+The calculated SHA-256 value must match the value recorded above exactly.
