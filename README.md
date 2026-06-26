@@ -10,8 +10,10 @@
 ![Qualification](https://img.shields.io/badge/Qualification-346%2F346-brightgreen)
 ![Unsafe Admissions](https://img.shields.io/badge/Unsafe%20Admissions-0-blue)
 ![Reference Implementation](https://img.shields.io/badge/Reference-Implementation-blue)
-![Open Standard](https://img.shields.io/badge/Open-Standard-blue)
+![Open Standard](https://img.shields.io/badge/Open-Use-blue)
 ![Shunyaya](https://img.shields.io/badge/Part%20of-Shunyaya%20Ecosystem-gold)
+
+[![STRIDE Release Integrity](https://github.com/OMPSHUNYAYA/STRIDE/actions/workflows/stride-verify.yml/badge.svg?branch=main)](https://github.com/OMPSHUNYAYA/STRIDE/actions/workflows/stride-verify.yml)
 
 ---
 
